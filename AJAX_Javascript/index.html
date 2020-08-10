@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+    <link rel="stylesheet" type="text/css" href="./index.css" />
+</head>
+
+<body>
+  <div class="ajax-box">
+      <button class="btn-ajax">
+          Send Request
+      </button>
+      <div class="ajax-result">
+          <p> Content of the result DIV box will be displayed by server response: </p>
+          <textarea id="get_resp"></textarea>
+      </div>
+ </div>
+    
+    <div class="ajax-box">
+      <form id="ajax-form" type="POST">
+       <input value="" name="name" type="text" placeholder="your name" />
+       <input value="" name="dob" type="text" placeholder="birth date"/>
+        <button  type="submit" >Send</button>
+      </form>
+      <div class="form-result">
+          <p> Content of the Form will be displayed by server response: </p>
+           <p id="post_resp">
+          </p>
+      </div>
+ </div>
+</body>
+    <script src="./script.js" ></script>>
+</html>
