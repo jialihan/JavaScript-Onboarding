@@ -13,3 +13,8 @@ practice and learn javascript basic and advanced functionality
 <img src="./AJAX_Javascript/post.png" >
 
 
+### 2. JSON - implementation for CORS
+
+
+
+
