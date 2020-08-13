@@ -1,3 +1,18 @@
+document.querySelector(".btn-cors").addEventListener("click", function() {
+  var request = new XMLHttpRequest();
+  // open request
+  request.open("GET", "https://www.google.com/", true);
+  // add handle response method
+  request.onreadystatechange = function() {
+    if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+      console.log("cors response success");
+      document.getElementById("get_resp").value = this.status;
+    }
+  };
+  // send request
+  request.send();
+});
+
 document.querySelector(".btn-ajax").addEventListener("click", function() {
   // create request
   var request = new XMLHttpRequest();
