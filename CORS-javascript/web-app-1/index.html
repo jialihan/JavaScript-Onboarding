@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jsonp test1</title>
+     <script type="text/javascript" src="http://127.0.0.1:8080/test.js"></script>
+</head>
+
+<body>
+    <script>
+
+    // create dom dynamically    
+   function addScriptTag(src){
+       var script = document.createElement('script');
+       script.setAttribute("type","text/javascript");
+       script.src = src;
+       document.body.appendChild(script);
+   }
+
+   // my callback func
+   function respHandler(data) {
+       alert(`hello, ${data}`);
+   }
+        
+    window.onload = function(){    
+       addScriptTag("http://127.0.0.1:8080?callback=respHandler");  
+   }
+</script>
+</body>
+    
+</html>
