@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
+<body>
+<div class="container">
+    <iframe id="myiframe"  src=""></iframe>
+    <div class="form-result">
+         <p class="title">iframe + window.name<p>
+        <p>Get Response:<p>
+        <textarea class="get-response">
+        </textarea>     
+    </div>
+    <div class="line">
+    </div>
+ 
+    <iframe id="myiframe2" name="form-target" src=""></iframe>
+    <form id="form2" action="http://127.0.0.1:8083" target="form-target" method="post">
+        <h1>Form</h1>
+        <div class="form-item">
+            <label for="name"><b>Name</b></label>
+            <input type="text" placeholder="your name" name="name" id="name" required>
+         </div>
+        <div class="form-item">
+            <label for="age"><b>Age</b></label>
+            <input type="text" placeholder="Your Age" name="age" id="age" required>
+        </div>
+        <button type="submit" class="btn">Submit</button>
+    </form>
+    <div class="form-result">
+         <p class="title">form + iframe<p>
+        <p>Post Response:<p>
+        <textarea class="post-response">
+        </textarea>     
+    </div>
+</div>
+    <script src="script.js"></script>>
+</body>
+</html>

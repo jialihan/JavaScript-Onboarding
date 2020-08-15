@@ -1,0 +1,34 @@
+* {box-sizing: border-box;}
+.container {
+  margin: 30px auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  border: 1px solid black;
+  width: 30%;
+  height: 550px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  border: 1px solid green;
+  width: 60%;
+  height: 50%;
+  background-color: lightgreen;
+}
+
+.title {
+    color: blue;
+    font-size: 22px;
+}
+
+.line {
+    width:80%;
+    height: 2px;
+    background-color: darkgrey;
+    margin-bottom: 20px;
+}
