@@ -16,6 +16,8 @@ practice and learn javascript basic and advanced functionality
 ### 2. JSON - implementation for CORS
   Refer to this article: [Blog Link](https://jialihan.github.io/blog/#/javascript/jsonp)
 
+### 3. Iframe - implementation for CORS GET & POST
 
+  Refer to this article: [Blog link](https://jialihan.github.io/blog/#/javascript/iframecors)
 
 
