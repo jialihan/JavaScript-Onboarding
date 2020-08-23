@@ -1,0 +1,12 @@
+.main {
+	width: 25rem;
+	margin: 2rem auto;
+}
+
+.title {
+	text-align: center;
+	font-size: 1.8rem;
+	color: palevioletred;
+	padding-left: 1rem;
+	padding-right: 1rem;
+}
