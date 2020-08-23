@@ -26,4 +26,5 @@ practice and learn javascript basic and advanced functionality
 * React-form: connect to state
 <img src="./forms/cover.png" width="277" height="320">
 
-
+### 5. Search Input Module - JS
+<img src="./search-input-module/cover.png" width="315" height="167">
