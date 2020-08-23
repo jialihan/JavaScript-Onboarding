@@ -20,7 +20,10 @@ practice and learn javascript basic and advanced functionality
 
   Refer to this article: [Blog link](https://jialihan.github.io/blog/#/javascript/iframecors)
 
-### Form
+### 4. Form
+
+* JS-html-form
+* React-form: connect to state
 <img src="./forms/cover.png" width="277" height="320">
 
 
