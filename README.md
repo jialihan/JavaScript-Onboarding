@@ -20,4 +20,7 @@ practice and learn javascript basic and advanced functionality
 
   Refer to this article: [Blog link](https://jialihan.github.io/blog/#/javascript/iframecors)
 
+### Form
+<img src="./forms/cover.png" width="277" height="320">
+
 
