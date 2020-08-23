@@ -10,3 +10,6 @@ Workflow:
 * domain_A: original client side code to send the request with iframe
 * domain_B: use `window.name` property to transfer data back to domain_A
 * domain_C: nodejs server to receive POST request from domain_
+
+
+<img src='./cover.png'>
