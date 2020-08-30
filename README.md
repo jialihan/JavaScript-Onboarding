@@ -38,5 +38,8 @@ with optimization:
 * modal open/close
 * cancel/confirm button events
 * **Delete list item**: important: two ways
-
+#### 6.1 Javascript version
 <img src="./dom-manipulation/cover.png" width="471" height="150">
+#### 6.2 React version
+build react item list, with add and remove capability, manage with local status.
+
