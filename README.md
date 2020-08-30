@@ -43,4 +43,5 @@ with optimization:
 
 #### 6.2 React version
 build react item list, with add and remove capability, manage with local status.
+
 <img src="./dom-manipulation/React-ListItem/react-list.png" widt="388" height="233">
