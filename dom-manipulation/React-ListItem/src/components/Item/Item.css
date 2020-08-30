@@ -1,0 +1,36 @@
+.Item {
+	width: 450px;
+	height: 60px;
+	border: 1px solid pink;
+	display: flex;
+	align-items: center;
+	margin: 15px auto;
+}
+
+.Item > label {
+	flex-grow: 4;
+}
+
+.del {
+	display: none;
+}
+.Item:hover > label {
+	transform: translateX(-20px);
+	transition: transform 0.5s ease-out;
+}
+.Item:hover .del {
+	padding-right: 20px;
+	display: block;
+	animation: slide-left 0.5s ease-in;
+}
+
+@keyframes slide-left {
+	from {
+		opacity: 0;
+		transform: translateX(20px);
+	}
+	to {
+		opacity: 1;
+		transform: translateX(0%);
+	}
+}

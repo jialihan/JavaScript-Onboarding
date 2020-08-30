@@ -1,0 +1,18 @@
+.modal-body {
+	margin: 300px auto;
+	width: 500px;
+	height: 400px;
+	background-color: lavender;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
+}
+.modal-footer {
+	width: 100%;
+	display: flex;
+	justify-content: space-evenly;
+}
+.modal-body label {
+	font-weight: bold;
+}
