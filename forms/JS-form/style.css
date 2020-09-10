@@ -79,3 +79,16 @@ main {
 		margin: 0 auto;
 	}
 }
+
+#radios {
+	display: flex;
+}
+
+#radio-item {
+	display: flex;
+	flex-basis: 20%;
+}
+
+#radio {
+	display: inline;
+}
