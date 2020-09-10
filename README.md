@@ -22,7 +22,7 @@ practice and learn javascript basic and advanced functionality
 
 ### 4. Form
 
-* JS-html-form
+* JS-html-form: [Article: handling forms](https://jialihan.github.io/blog/#/javascript/form-js)
 * React-form: connect to state
 <img src="./forms/cover.png" width="277" height="320">
 
