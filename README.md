@@ -39,7 +39,9 @@ with optimization:
 * cancel/confirm button events
 * **Delete list item**: important: two ways
 #### 6.1 Javascript version
-<img src="./dom-manipulation/cover.png" width="471" height="150">
+<img src="./dom-manipulation/JS-ListItem/cover.png" width="471" height="150">
+
 #### 6.2 React version
 build react item list, with add and remove capability, manage with local status.
 
+<img src="./dom-manipulation/React-ListItem/react-list.png" widt="388" height="233">
