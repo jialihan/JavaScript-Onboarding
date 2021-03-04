@@ -44,4 +44,10 @@ with optimization:
 #### 6.2 React version
 build react item list, with add and remove capability, manage with local status.
 
-<img src="./dom-manipulation/React-ListItem/react-list.png" widt="388" height="233">
+<img src="./dom-manipulation/React-ListItem/react-list.png" width="388" height="233">
+
+
+### 7. count down timer
+Javascript [setInterval()](https://www.w3schools.com/jsref/met_win_setinterval.asp)
+
+<img src="./countdown-timer/cover.png" width="336" height="191" >
