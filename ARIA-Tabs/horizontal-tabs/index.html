@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <h1>Choose your drink here:</h1>
+    <div class="tabs">
+        <div role="tablist" aria-label="drinks" aria-orientation="horizontal">
+            <button role="tab" aria-selected="true" aria-controls="coffee-tab" id="coffee">
+                Coffee
+            </button>
+            <button role="tab" aria-selected="false" aria-controls="tea-tab" id="tea" tabindex="-1">
+                Tea
+            </button>
+            <button role="tab" aria-selected="false" aria-controls="water-tab" id="water" tabindex="-1"
+                data-deletable="">
+                Water
+            </button>
+            <button role="tab" aria-selected="false" aria-controls="coke-tab" id="coke" tabindex="-1" data-deletable="">
+                Coke
+            </button>
+        </div>
+        <div tabindex="0" role="tabpanel" id="coffee-tab" aria-labelledby="coffee">
+            <p>
+                Coffee is a brewed drink prepared from roasted coffee beans, the seeds of berries from certain Coffea
+                species. When coffee berries turn from green to bright red in color – indicating ripeness – they are
+                picked, processed, and dried.[2] Dried coffee seeds (referred to as "beans") are roasted to varying
+                degrees, depending on the desired flavor.
+            </p>
+        </div>
+        <div tabindex="0" role="tabpanel" id="tea-tab" aria-labelledby="tea" hidden="">
+            <p>
+                Tea is an aromatic beverage commonly prepared by pouring hot or boiling water over cured or fresh leaves
+                of Camellia sinensis, an evergreen shrub native to China and East Asia.
+            </p>
+        </div>
+        <div tabindex="0" role="tabpanel" id="water-tab" aria-labelledby="water" hidden="">
+            <p>
+                Water is an inorganic, transparent, tasteless, odorless, and nearly colorless chemical substance, which
+                is the main constituent of Earth's hydrosphere and the fluids of all known living organisms (in which it
+                acts as a solvent).
+            </p>
+        </div>
+        <div tabindex="0" role="tabpanel" id="coke-tab" aria-labelledby="coke" hidden="">
+            <p>
+                Coca-Cola, or Coke, is a carbonated soft drink manufactured by The Coca-Cola Company. Originally
+                marketed as a temperance drink and intended as a patent medicine, it was invented in the late 19th
+                century by John Stith Pemberton and was bought out by businessman Asa Griggs Candler, whose marketing
+                tactics led Coca-Cola to its dominance of the world soft-drink market throughout the 20th century.
+            </p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

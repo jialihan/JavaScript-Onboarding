@@ -1,0 +1,114 @@
+
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.search-box{
+    width: 690px;
+    position: relative;
+    margin: 100px auto;
+}
+.search-bar {
+    /* google search bar style */
+    display: flex;
+    /* align-items: center;
+    justify-content: space-between; */
+    background: #fff;
+    width: 100%;
+    height: 44px;
+    border: 1px solid transparent;
+    border-radius: 24px;
+    box-shadow: 0 2px 5px 1px rgb(64 60 67 / 16%);
+}
+.search-bar:hover{
+    box-shadow: 0 2px 5px 4px rgb(64 60 67 / 16%);
+}
+.addon {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-color: rgba(223,225,229,0);
+    border-bottom: 0;
+}
+
+#search {
+    /* override browser default input style */
+    outline: none;
+    border: 0;
+    width: 90%;
+    height: 100%;
+    background-color:transparent;
+    border-radius: 10px;
+    font-size: 24px;
+    padding-left: 20px;
+}
+#search-btn{
+    border:0;
+    background: transparent;
+    cursor: pointer;
+}
+#search-btn:focus,
+#search-btn:active,
+#search-btn img:active,
+#search-btn img:focus{
+    border: 0px;
+    outline: none;
+}
+
+.dropdown-container{
+    position: absolute;
+    width: 100%;
+    height: 250px;
+    top: 100%;
+    overflow: auto;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-radius:  0 0 24px 24px;
+    padding-bottom: 4px;
+    background-color: #fff;
+    box-shadow: 0 9px 8px -3px rgb(64 60 67 / 24%), 8px 0 8px -7px rgb(64 60 67 / 24%), -8px 0 8px -7px rgb(64 60 67 / 24%);
+    display: none;
+
+}
+.separator{
+    background: rgb(241, 240, 240);
+    margin: 0 14px;
+    padding-bottom: 4px;
+    margin-bottom: 6px;
+}
+.dropdown
+{
+    list-style-type: none;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.open {
+    display: flex;
+    flex-direction: column;
+}
+
+.dropdown > li:hover,
+.li-selected{
+    background-color: rgb(233, 232, 232);
+    outline: none;
+}
+
+.dropdown-item {
+    width: 100%;
+    height: 40px;
+    font-size: 22px;
+    padding-top: 10px;
+    padding-left: 15px;
+}
+
+@media screen and (max-width: 768px) {
+    .search-box{
+        width: 90%;
+    }
+    .dropdown {
+        height: 220px;
+    }
+}

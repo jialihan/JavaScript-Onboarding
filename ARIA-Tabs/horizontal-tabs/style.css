@@ -1,0 +1,91 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-self: center;
+}
+
+.tabs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-self: center;
+    width: 25rem;
+}
+
+[role="tablist"] {
+    margin: 0 0  0.3em;
+    overflow: visible;
+  }
+  
+  [role="tab"] {
+    position: relative;
+    margin: 0;
+    padding: 0.3em 0.5em 0.4em;
+    border: 1px solid hsl(219, 1%, 72%);
+    border-radius: 0.2em 0.2em 0 0;
+    overflow: visible;
+    font-size: 20px;
+    background: hsl(220, 20%, 94%);
+  }
+  
+  [role="tab"]:hover::before,
+  [role="tab"]:focus::before,
+  [role="tab"][aria-selected="true"]::before {
+    position: absolute;
+    bottom: 100%;
+    right: -1px;
+    left: -1px;
+    border-radius: 0.2em 0.2em 0 0;
+    border-top: 3px solid yellow;
+    content: '';
+  }
+  
+  [role="tab"][aria-selected="true"] {
+    border-radius: 0;
+    background: gray;
+    outline: 0;
+  }
+  
+  [role="tab"][aria-selected="true"]:not(:focus):not(:hover)::before {
+    border-top: 5px solid hsl(218, 96%, 48%);
+  }
+  
+  [role="tab"]:hover,
+  [role="tab"]:focus,
+  [role="tab"]:active {
+    outline: 0;
+    border-radius: 0;
+    color: inherit;
+  }
+  
+  /* [role="tab"]:hover::before,
+  [role="tab"]:focus::before {
+    border-color: yellow;
+  } */
+  
+  [role="tabpanel"] {
+    position: relative;
+    z-index: 2;
+    padding: 0.5em 0.5em 0.7em;
+    border: 1px solid hsl(219, 1%, 72%);
+    border-radius: 0 0.2em 0.2em 0.2em;
+    box-shadow: 0 0 0.2em hsl(219, 1%, 72%);
+    background: hsl(220, 43%, 99%);
+    width: 400px;
+    height: 120px;
+  }
+  
+  [role="tabpanel"]:focus {
+    border-color: yellow;
+    box-shadow: 0 0 0.2em yellow;
+    outline: 0;
+  }
+  
+  [role="tabpanel"] p {
+    margin: 0;
+  }
+  
+  [role="tabpanel"] * + p {
+    margin-top: 1em;
+  }

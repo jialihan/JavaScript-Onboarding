@@ -39,4 +39,4 @@ function parseURL(s) {
     console.log(params);
     return params;
 }
-parseURL(url);
+parseURL(url);// {age: "29", name: "je=lly"}
