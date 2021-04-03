@@ -10,14 +10,16 @@
 // - outside click, input before submit, keep mounted with current data
 
 var searchBarEL = document.querySelector('.search-bar');
-var inputEL = document.getElementById('search');
+var inputEL = document.getElementById('input-search');
+var inputControlsEL = document.querySelector('.input-controls');
+var clearBtnEL = document.querySelector('.clear-btn');
 var dropdownContainerEL = document.querySelector('.dropdown-container');
 var dropdownEL = document.querySelector('.dropdown');
 var searchBtnEL = document.getElementById('search-btn');
 
 /********************Event Listener************************************** */
-inputEL.addEventListener('input', function () {
-    debouncedInputHandler();
+inputEL.addEventListener('input', function (e) {
+    debouncedInputHandler(e);
 });
 inputEL.addEventListener('keyup', function (event) {
     if (event.key === 'Enter') {
@@ -29,12 +31,18 @@ inputEL.addEventListener('focus', (event) => {
     searchBarEL.classList.add('addon');
     dropdownContainerEL.classList.add('open');
     if (inputEL.value === "") {
-        inputHander();
+        inputHandler(event);
     }
 });
 inputEL.addEventListener('blur', (event) => {
     dropdownContainerEL.classList.remove('open');
     searchBarEL.classList.remove('addon');
+});
+clearBtnEL.addEventListener('click', function (e) {
+    console.log("input clear btn clicked!");
+    e.preventDefault();
+    inputEL.value = "";
+    inputEL.focus();
 });
 searchBtnEL.addEventListener('click', submitSearchHandler);
 dropdownContainerEL.addEventListener('scroll', function () {
@@ -48,6 +56,7 @@ function submitSearchHandler(e) {
     /// enter key: lose focus
     inputEL.blur();
     dropdownContainerEL.classList.remove('open');
+    inputControlsEL.classList.remove('open');
     // add current search to history;
     var result = localStorage.getItem('searchHistory');
     var searchHistory = [];
@@ -56,7 +65,9 @@ function submitSearchHandler(e) {
         searchHistory = JSON.parse(result);
     }
     var newHistory = new Set(searchHistory);
-    newHistory.add(inputEL.value);
+    if (inputEL.value) {
+        newHistory.add(inputEL.value);
+    }
     newHistory = Array.from(newHistory);
     localStorage.setItem('searchHistory', JSON.stringify(newHistory));
     inputEL.value = "";
@@ -66,9 +77,18 @@ function submitSearchHandler(e) {
 }
 
 /********************* Input Handler ******************************/
-var inputHander = function () {
-    dropdownEL.innerHTML = ""; // for re-paint
+function inputHandler(e) {
     var key = inputEL.value;
+    console.log("input value:", key);
+    // handle input conrols elements
+    if (!key) {
+        inputControlsEL.classList.remove('open');
+    }
+    else {
+        inputControlsEL.classList.add('open');
+    }
+    // handle dropdown 
+    dropdownEL.innerHTML = ""; // for re-paint
     var data = getSuggestionData(key);
     console.log("data to render:", data);
     renderDropDownItems(data);
@@ -79,11 +99,11 @@ function debounce(fn, time) {
     return function (...args) {
         clearTimeout(timeout);
         timeout = setTimeout(() => {
-            fn(...args);
+            fn(arguments);
         }, time);
     }
 }
-var debouncedInputHandler = debounce(inputHander, 500);
+var debouncedInputHandler = debounce(inputHandler, 500);
 
 /*********************  Data Fetch ******************************/
 function getLocalSearchHistory() {
@@ -145,30 +165,6 @@ function renderDropDownItems(data) {
 }
 /********************* Accessibility ******************************/
 var liSelected;
-// window.addEventListener('keydown', function (e) {
-//     // dummy element
-//     var dummyEl = document.getElementById('search');
-//     // check for focus
-//     var isFocused = (document.activeElement === dummyEl);
-//     if (e.key === 'ArrowDown' && isFocused) {
-//         console.log("arrow down pressed!");
-//         var lis = document.querySelectorAll('.dropdown li');
-//         if (liSelected) {
-//             liSelected.classList.remove("li-selected");
-//             var next = liSelected.nextElementSibling;
-//             if (!next) {
-//                 next = lis[0];
-//             }
-//             next.classList.add("li-selected");
-//         }
-//         else {
-//             liSelected = lis[0];
-//             liSelected.classList.add('liSelected');
-//         }
-//         inputEL.value = liSelected.textContent;
-//     }
-// });
-
 inputEL.addEventListener('keydown', function (e) {
     // only when input is focused, this event can capture
     var lis = document.querySelectorAll('.dropdown li');
