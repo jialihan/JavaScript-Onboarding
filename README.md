@@ -51,3 +51,7 @@ build react item list, with add and remove capability, manage with local status.
 Javascript [setInterval()](https://www.w3schools.com/jsref/met_win_setinterval.asp)
 
 <img src="./countdown-timer/cover.png" width="336" height="191" >
+
+### 8. google search bar with auto complete
+
+<img src="./google-search-bar/cover.png" width="358 height="163" >
