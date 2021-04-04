@@ -54,4 +54,4 @@ Javascript [setInterval()](https://www.w3schools.com/jsref/met_win_setinterval.a
 
 ### 8. google search bar with auto complete
 
-<img src="./google-search-bar/cover.png" width="358 height="163" >
+<img src="./google-search-bar/cover.png" width="358" height="163" >
