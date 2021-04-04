@@ -1,14 +1,26 @@
 // Requirement:
-// 1. support user input element (debounce)
-// 2. search or enter key can submit the search request
-// 3. when nothing input but inputEL is focused, show local search history in dropdown
-// 4. add onchange handler, send "getSuggesting data" from server
-// 5. render suggestion data in dropdown
-// 6. when input is blured, dropdown hidden
-// - 6.1 consider unmount or hidden on different cases
-// - when submitted, can unmount
-// - outside click, input before submit, keep mounted with current data
+// 1. Input element:
+//    - support user input element (debounce)
+//    - a clear button to clear input value
+// 2. dropdown element:
+//    - show dropdown whenever input is focused
+//    - hide dropdown after submit or outside click (mount / unmount)
+//          * when submitted, unmount
+//          * outside click, input before submit, keep mounted with current data
+//    - updates UI when hide/show dropdown, be consistent UI
+//    - when value is empty, show local search history in dropdown
+//    - render suggestion data from sever
+//    - infinite scroll for more data in dropdown
+// 3. submit data:  enter key or search icon
+// 4. Accessibility:
+//    - arrow down key to select dropdown from input element at the first time
+//    - arrow down / up key to select with keyboard
+//    - auto complete when keyboard selected
 
+
+/****************************************************************************************/
+/*****************************  Elements    *********************************************/
+/****************************************************************************************/
 var searchBarEL = document.querySelector('.search-bar');
 var inputEL = document.getElementById('input-search');
 var inputControlsEL = document.querySelector('.input-controls');
@@ -17,51 +29,89 @@ var dropdownContainerEL = document.querySelector('.dropdown-container');
 var dropdownEL = document.querySelector('.dropdown');
 var searchBtnEL = document.getElementById('search-btn');
 
-/********************Event Listener************************************** */
-inputEL.addEventListener('input', function (e) {
-    debouncedInputHandler(e);
-});
+/****************************************************************************************/
+/**************************    Event Listener     ***************************************/
+/****************************************************************************************/
+inputEL.addEventListener('input', debounce(inputHandler, 500));
 inputEL.addEventListener('keyup', function (event) {
     if (event.key === 'Enter') {
-        // event.keyCode === 13 -> deprecated !!! not use
         submitSearchHandler();
     }
 });
-inputEL.addEventListener('focus', (event) => {
-    searchBarEL.classList.add('addon');
-    dropdownContainerEL.classList.add('open');
-    if (inputEL.value === "") {
-        inputHandler(event);
-    }
-});
+inputEL.addEventListener('focus', onInputFocusHandler);
 inputEL.addEventListener('blur', (event) => {
     dropdownContainerEL.classList.remove('open');
     searchBarEL.classList.remove('addon');
 });
-clearBtnEL.addEventListener('click', function (e) {
-    console.log("input clear btn clicked!");
-    e.preventDefault();
-    inputEL.value = "";
-    inputEL.focus();
-});
+clearBtnEL.addEventListener('click', clearInputHandler);
 searchBtnEL.addEventListener('click', submitSearchHandler);
-dropdownContainerEL.addEventListener('scroll', function () {
-    console.log("height:", dropdownContainerEL.clientHeight);
-    if (dropdownContainerEL.scrollTop + dropdownContainerEL.clientHeight // 200px dropdown height
-        + 5 >= dropdownContainerEL.scrollHeight) {
-        renderDropDownItems(getSuggestionData(inputEL.value));
+dropdownContainerEL.addEventListener('scroll', dropdownInfiniteScrollHandler, { passive: true });
+
+/****************************************************************************************/
+/*****************************  Event Handlers ******************************************/
+/****************************************************************************************/
+function debounce(fn, time) {
+    var timeout;
+    return function (...args) {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => {
+            fn(arguments);
+        }, time);
     }
-});
+}
+/**
+ * handle the first click and any empty string on input
+ * 1) before user start typing 
+ * 2) clear input 
+ * @param {*} e 
+ */
+function onInputFocusHandler(e) {
+    searchBarEL.classList.add('addon');
+    dropdownContainerEL.classList.add('open');
+    var key = inputEL.value;
+    if (!key) {
+        inputControlsEL.classList.remove('open');
+        loadDropdown(key);
+        console.log("render dropdown from focus event");
+    }
+}
+/**
+ * handle user typing, only when non-empty values on input
+ * @param {*} e 
+ */
+function inputHandler(e) {
+    console.log("input event:");
+    var key = inputEL.value;
+    // handle input conrols elements
+    if (key) {
+        console.log("render dropdown from input event");
+        inputControlsEL.classList.add('open');
+        loadDropdown(key);
+    }
+}
+/**
+ * load dropdown with data
+ * @param {*} key 
+ */
+function loadDropdown(key) {
+    dropdownEL.innerHTML = ""; // for re-paint
+    var data = getSuggestionData(key);
+    renderDropDownItems(data);
+}
+/**
+ * handle submit input value event
+ * store curernt search in localstorage
+ * TODO: send data to server
+ * @param {*} e 
+ */
 function submitSearchHandler(e) {
-    /// enter key: lose focus
-    inputEL.blur();
+    inputEL.blur(); // lose focus
     dropdownContainerEL.classList.remove('open');
     inputControlsEL.classList.remove('open');
     // add current search to history;
     var result = localStorage.getItem('searchHistory');
     var searchHistory = [];
     if (result) {
-        console.log("localstorage result:", result);
         searchHistory = JSON.parse(result);
     }
     var newHistory = new Set(searchHistory);
@@ -75,37 +125,30 @@ function submitSearchHandler(e) {
     // TODO: get response from server 
     // TODO: render response from server
 }
-
-/********************* Input Handler ******************************/
-function inputHandler(e) {
-    var key = inputEL.value;
-    console.log("input value:", key);
-    // handle input conrols elements
-    if (!key) {
-        inputControlsEL.classList.remove('open');
-    }
-    else {
-        inputControlsEL.classList.add('open');
-    }
-    // handle dropdown 
-    dropdownEL.innerHTML = ""; // for re-paint
-    var data = getSuggestionData(key);
-    console.log("data to render:", data);
-    renderDropDownItems(data);
-    console.log(key);
-}
-function debounce(fn, time) {
-    var timeout;
-    return function (...args) {
-        clearTimeout(timeout);
-        timeout = setTimeout(() => {
-            fn(arguments);
-        }, time);
+/**
+ * infinite scroll on dropdown
+ */
+function dropdownInfiniteScrollHandler() {
+    // console.log("height:", dropdownContainerEL.clientHeight);
+    if (dropdownContainerEL.scrollTop + dropdownContainerEL.clientHeight // 200px dropdown height
+        + 5 >= dropdownContainerEL.scrollHeight) {
+        renderDropDownItems(getSuggestionData(inputEL.value));
     }
 }
-var debouncedInputHandler = debounce(inputHandler, 500);
+/**
+ * Clear user input 
+ * still keeps input focus state
+ * @param {*} e 
+ */
+function clearInputHandler(e) {
+    e.preventDefault();
+    inputEL.value = "";
+    inputEL.focus();
+}
 
-/*********************  Data Fetch ******************************/
+/***************************************************************************************/
+/************************************  Data Fetch **************************************/
+/***************************************************************************************/
 function getLocalSearchHistory() {
     var result = localStorage.getItem('searchHistory');
     console.log("search history:", typeof result, result);
@@ -147,7 +190,9 @@ function getSuggestionData(key) {
     return data;
 }
 
-/********************* Render Data ******************************/
+/***************************************************************************************/
+/********************************** DOM Manipulations **********************************/
+/***************************************************************************************/
 function renderDropDownItems(data) {
     if (!data || data.length === 0) {
         return;
@@ -161,9 +206,12 @@ function renderDropDownItems(data) {
         li.tabIndex = 0;
         fragment.appendChild(li);
     });
-    dropdownEL.appendChild(fragment);    // show the dropdown while use input
+    dropdownEL.appendChild(fragment);
 }
-/********************* Accessibility ******************************/
+
+/***************************************************************************************/
+/****************************   Accessibility     **************************************/
+/***************************************************************************************/
 var liSelected;
 inputEL.addEventListener('keydown', function (e) {
     // only when input is focused, this event can capture
@@ -208,7 +256,9 @@ inputEL.addEventListener('keydown', function (e) {
     }
 });
 
-// remove the keyboard select when mouse move
+/**
+ * Remove the keyboard select when mouse move 
+ */
 dropdownContainerEL.addEventListener('mousemove', e => {
     if (liSelected) {
         liSelected.classList.remove("li-selected");
