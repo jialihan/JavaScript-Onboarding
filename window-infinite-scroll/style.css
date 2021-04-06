@@ -1,0 +1,109 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body {
+    /* reserve blank space for the loading when scroll down */
+    padding-bottom: 60px;
+}
+.container{
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: center;
+}
+.posts {
+    height: 100%;
+    width: 100%;
+}
+.post {
+    margin: 30px 0;
+    height: 180px;
+    border: 1px solid  white;
+    box-shadow: 0 0 5px 4px pink;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    
+}
+
+.post .content {
+    width: 80%;
+    height: 100px;
+    overflow-y: scroll;
+    text-align: center;
+}
+
+.post .author {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: right;
+}
+
+.loading {
+    position: fixed;
+    bottom: 40px;
+	left: 50%;
+	transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity .3s ease-in;
+}
+
+.loading.show {
+	opacity: 1;
+}
+
+/**
+ * ==============================================
+ * Dot Flashing
+ * ==============================================
+ */
+ .dot-flashing {
+    position: relative;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    background-color: #9880ff;
+    color: #9880ff;
+    animation: dotFlashing 1s infinite linear alternate;
+    animation-delay: .5s;
+  }
+  
+  .dot-flashing::before, .dot-flashing::after {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    top: 0;
+  }
+  
+  .dot-flashing::before {
+    left: -15px;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    background-color: #9880ff;
+    color: #9880ff;
+    animation: dotFlashing 1s infinite alternate;
+    animation-delay: 0s;
+  }
+  
+  .dot-flashing::after {
+    left: 15px;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    background-color: #9880ff;
+    color: #9880ff;
+    animation: dotFlashing 1s infinite alternate;
+    animation-delay: 1s;
+  }
+  
+  @keyframes dotFlashing {
+    0% {
+      background-color: #9880ff;
+    }
+    50%,
+    100% {
+      background-color: #ebe6ff;
+    }
+  }
