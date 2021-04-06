@@ -39,10 +39,7 @@ inputEL.addEventListener('keyup', function (event) {
     }
 });
 inputEL.addEventListener('focus', onInputFocusHandler);
-inputEL.addEventListener('blur', (event) => {
-    dropdownContainerEL.classList.remove('open');
-    searchBarEL.classList.remove('addon');
-});
+inputEL.addEventListener('blur', inputBlurHandler);
 clearBtnEL.addEventListener('click', clearInputHandler);
 searchBtnEL.addEventListener('click', submitSearchHandler);
 dropdownContainerEL.addEventListener('scroll', dropdownInfiniteScrollHandler, { passive: true });
@@ -88,6 +85,14 @@ function inputHandler(e) {
         inputControlsEL.classList.add('open');
         loadDropdown(key);
     }
+}
+/**
+ * When outside click, inputEL blur
+ * hide dropdown & recover searchBar style
+ */
+function inputBlurHandler(event) {
+    dropdownContainerEL.classList.remove('open');
+    searchBarEL.classList.remove('addon');
 }
 /**
  * load dropdown with data
