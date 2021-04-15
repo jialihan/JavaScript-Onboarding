@@ -1,12 +1,15 @@
 // https://www.w3.org/TR/wai-aria-practices-1.1/examples/accordion/accordion.html
+
+/**************************** Elements ****************************/
 var accordionEL = document.querySelector('.Accordion');
 var headersEL = Array.from(document.querySelectorAll('.Accordion-trigger'));
 var panelsEL = Array.from(accordionEL.querySelectorAll('.Accordion-panel'));
 
+/************************* Configuration  ****************************/
 // Allow for multiple accordion sections to be expanded at the same time
 var allowMultiple = accordionEL.hasAttribute('data-allow-multiple');
 
-// Handle Click Accordion Header Event
+/******************** Hide/Show Panel Click Event ********************/
 accordionEL.addEventListener('click', function (event) {
     var targetEL = event.target;
     if (targetEL.classList.contains('Accordion-trigger')) {
@@ -39,6 +42,7 @@ accordionEL.addEventListener('click', function (event) {
         event.preventDefault();
     }
 });
+/******************* END - Hide/Show Panel Click Event *****************/
 
 /******************** Accessibility Arrow UP/DOWN ********************/
 accordionEL.addEventListener('keydown', function (event) {
@@ -60,9 +64,10 @@ accordionEL.addEventListener('keydown', function (event) {
         }
     }
 });
+/***************  END - Accessibility Arrow UP/DOWN ******************/
 
 
-/***************   Test BUTTON Click Event when Focused ******************/
+/***************  Test BUTTON Click Event when Focused ********************/
 var testBtnEL = document.getElementById("test-btn");
 var nativeBtnEL = document.getElementById("test-btn2");
 var resultEL = document.querySelector('.result');
@@ -78,3 +83,4 @@ nativeBtnEL.addEventListener('click', function (e) {
 nativeBtnEL.addEventListener('focus', function (e) {
     resultEL.textContent = "Native button is focused !";
 });
+/*************** END - Test BUTTON Click Event when Focused ****************/
