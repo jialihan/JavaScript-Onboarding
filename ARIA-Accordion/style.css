@@ -1,0 +1,104 @@
+.container{
+    margin-top: 60px;
+}
+.Accordion {
+    margin: 0;
+    padding: 0;
+    border: 2px solid hsl(0, 0%, 82%);
+    border-radius: 7px;
+    width: 20em;
+  }
+/************************ Header *********************/
+  .Accordion h3 {
+    margin: 0;
+    padding: 0;
+  }
+
+/******************** button & text *******************/
+  .Accordion-trigger {
+    background: none;
+    color: hsl(0, 0%, 13%);
+    display: block;
+    font-size: 1rem;
+    font-weight: normal;
+    margin: 0;
+    padding: 1em 1.5em;
+    position: relative;
+    text-align: left;
+    width: 100%;
+    outline: none;
+  }
+  
+  .Accordion-trigger:focus,
+  .Accordion-trigger:hover {
+    background: hsl(216, 94%, 94%);
+  }
+  button {
+    border-style: none;
+  }
+  .Accordion-title {
+    display: block;
+    pointer-events: none;
+    border: transparent 2px solid;
+    border-radius: 5px;
+    padding: 0.25em;
+    outline: none;
+  }
+  
+  /* .Accordion-trigger:focus .Accordion-title {
+    border-color: hsl(216, 94%, 73%);
+  } */
+/****************** END - button & text ******************/
+
+/********************** Chevron Icon **********************/
+  .Accordion-icon {
+    border: solid hsl(0, 0%, 62%);
+    border-width: 0 2px 2px 0;
+    height: 0.5rem;
+    pointer-events: none;
+    position: absolute;
+    right: 2em;
+    top: 50%;
+    transform: translateY(-60%) rotate(45deg);
+    width: 0.5rem;
+  }
+  
+  /* .Accordion-trigger:focus .Accordion-icon,
+  .Accordion-trigger:hover .Accordion-icon {
+    border-color: hsl(216, 94%, 73%);
+  } */
+
+  .Accordion-trigger[aria-expanded="true"] .Accordion-icon {
+    transform: translateY(-50%) rotate(-135deg);
+  }
+/***************** END - Chevron Icon  ********************/
+/*********************** END - Header *********************/
+
+/***********************  Panel *********************/
+.Accordion-panel {
+    margin: 0;
+    padding: 1em 1.5em;
+}
+
+
+/********************* Test Button Enter Key *****************/
+.btn-box{
+    display: inline-block;
+    margin-right: 30px;
+}
+#test-btn{
+    padding: 5px 8px;
+    background: blue;
+    width: fit-content;
+    border-radius: 10px;
+}
+#test-btn2{
+    padding: 5px 8px;
+    background: green;
+    width: fit-content;
+    border-radius: 10px;
+}
+.result{
+    font-size: 20px;
+    color:  red;
+}

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div class="container">
+        <h2> ARIA Accordion Example</h2>
+        <!-- Accordion Configuration Options
+        
+        data-allow-toggle
+          Always allow in this code
+        
+        data-allow-multiple
+          Allow for multiple accordion sections to be expanded at the same time. Assumes data-allow-toggle otherwise the toggle on open sections would be disabled.
+        __________
+        
+        Ex:
+          <div id="accordionGroup" class="Accordion" data-allow-multiple>
+        -->
+        <div id="accordionGroup" class="Accordion">
+            <h3>
+                <button aria-expanded="true" class="Accordion-trigger" aria-controls="sect1" id="accordion1id">
+                    <span class="Accordion-title">
+                        Section 1
+                        <span class="Accordion-icon"></span>
+                    </span>
+                </button>
+            </h3>
+            <div id="sect1" role="region" aria-labelledby="accordion1id" class="Accordion-panel">
+                <div>
+                    <p>
+                        Generating random paragraphs can be an excellent way for writers to get their creative flow
+                        going at the beginning of the day. The writer has no idea what topic the random paragraph will
+                        be about when it appears. This forces the writer to use creativity to complete one of three
+                        common writing challenges. The writer can use the paragraph as the first one of a short story
+                        and build upon it. A second option is to use the random paragraph somewhere in a short story
+                        they create.
+                    </p>
+                </div>
+            </div>
+            <h3>
+                <button aria-expanded="false" class="Accordion-trigger" aria-controls="sect2" id="accordion2id">
+                    <span class="Accordion-title">
+                        Section 2
+                        <span class="Accordion-icon"></span>
+                    </span>
+                </button>
+            </h3>
+            <div id="sect2" role="region" aria-labelledby="accordion2id" class="Accordion-panel" hidden="">
+                <div>
+                    <p>A random paragraph can also be an excellent way for a writer to tackle writers' block. Writing
+                        block can often happen due to being stuck with a current project that the writer is trying to
+                        complete. By inserting a completely random paragraph from which to begin, it can take down some
+                        of the issues that may have been causing the writers' block in the first place.</p>
+                </div>
+            </div>
+            <h3>
+                <button aria-expanded="false" class="Accordion-trigger" aria-controls="sect3" id="accordion3id">
+                    <span class="Accordion-title">
+                        Section 3
+                        <span class="Accordion-icon"></span>
+                    </span>
+                </button>
+            </h3>
+            <div id="sect3" role="region" aria-labelledby="accordion3id" class="Accordion-panel" hidden="">
+                <div>
+                    <p>
+                        No! All of the paragraphs in the generator are written by humans, not computers. When first
+                        building this generator we thought about using computers to generate the paragraphs, but they
+                        weren't very good and many times didn't make any sense at all. We therefore took the time to
+                        create paragraphs specifically for this generator to make it the best that we could.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <h2> Enter Key as Click event when element is focused </h2>
+    <div>
+        <div class="buttons">
+            <div class="btn-box">
+                <h3>I am not a native button</h3>
+                <div id="test-btn" tabindex="0" role="button">Press Enter Key</div>
+            </div>
+            <div class="btn-box">
+                <h3>I am a native button</h3>
+                <button id="test-btn2">Press Enter Key</button>
+            </div>
+
+        </div>
+        <p class="result">No enter key press event !</p>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
