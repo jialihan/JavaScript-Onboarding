@@ -7,7 +7,7 @@ body {
 
 .tabs {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-self: center;
     width: 25rem;
@@ -16,17 +16,22 @@ body {
 [role="tablist"] {
     margin: 0 0  0.3em;
     overflow: visible;
-  }
+    display: flex;
+    flex-direction: column;
+}
   
-  [role="tab"] {
+[role="tab"] {
     position: relative;
-    margin: 0;
+    margin-top: 5px;
     padding: 0.3em 0.5em 0.4em;
     border: 1px solid hsl(219, 1%, 72%);
     border-radius: 0.2em 0.2em 0 0;
     overflow: visible;
     font-size: 20px;
     background: hsl(220, 20%, 94%);
+  }
+  [role="tab"]:first-child{
+    margin: 0;
   }
   
   [role="tab"]:hover::before,
@@ -73,7 +78,9 @@ body {
     box-shadow: 0 0 0.2em hsl(219, 1%, 72%);
     background: hsl(220, 43%, 99%);
     width: 400px;
-    height: 120px;
+    height: 150px;
+    overflow: auto;
+    margin-left: 5px;
   }
   
   [role="tabpanel"]:focus {

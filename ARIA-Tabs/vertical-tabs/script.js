@@ -1,4 +1,4 @@
-var tabs = document.querySelectorAll("[role='tab']");
+var tabs = Array.from(document.querySelectorAll("[role='tab']"));
 var tablist = document.querySelector('[role="tablist"]');
 var keys = {
     up: 'ArrowUp',
@@ -46,24 +46,20 @@ function handleArrowKeyDown(event) {
     var cur = document.querySelector('[aria-selected="true"]');
     cur.blur();
     cur.setAttribute('aria-selected', 'false');
+    var index = tabs.indexOf(cur);
+    var dir;
     var key = event.key;
     if (key === keys.left || key === keys.up) {
-        if (cur.previousElementSibling) {
-            cur.previousElementSibling.setAttribute('aria-selected', 'true');
-            cur.previousElementSibling.focus();
-        } else {
-            handleFirstTab();
-        }
+        dir = -1;
     } else if (key === keys.right || key === keys.down) {
-        if (cur.nextElementSibling) {
-            cur.nextElementSibling.setAttribute('aria-selected', 'true');
-            cur.nextElementSibling.focus();
-        } else {
-            handleLastTab();
-        }
+        dir = 1;
     }
+    var len = tabs.length;
+    var nextIndex = (index + dir + len) % len;
+    var next = tabs[nextIndex];
+    next.setAttribute('aria-selected', 'true');
+    next.focus();
     showTabPanel();
-
 }
 function handleFirstTab() {
     var first = document.querySelector('[role="tablist"] [role="tab"]:first-child');
