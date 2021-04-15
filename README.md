@@ -59,3 +59,10 @@ Javascript [setInterval()](https://www.w3schools.com/jsref/met_win_setinterval.a
 ### 9. Window Post Infinite Scroll
 
 <img src="./window-infinite-scroll/cover.png" height="427" width="281" >
+
+### 10. ARIA Accordion Example
+- Element.[getAttribute()](https://developer.mozilla.org/en-US/docs/Web/API/Element/getAttribute)
+- Element.[setAttribute](https://developer.mozilla.org/en-US/docs/Web/API/Element/setAttribute)('hidden', '')
+- Array.[indexOf(el)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf)
+
+<img src="./ARIA-Accordion/cover.png" height="427" width="281" >
