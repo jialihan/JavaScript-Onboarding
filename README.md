@@ -84,3 +84,8 @@ Docs: [ARIA-tabs](https://www.w3.org/TR/wai-aria-practices-1.1/examples/tabs/tab
 - ReactDOM
 
 More details on this article here: [SSR - react](https://jialihan.github.io/blog/#/react/ssr_react)
+
+### 13. Progressive Render on Server side
+<img src="./progressive-render-html/cover.gif"  />
+Network tab:
+<img  src="./progressive-render-html/network.png"  />
