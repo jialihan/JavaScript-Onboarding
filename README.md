@@ -76,3 +76,11 @@ Docs: [ARIA-tabs](https://www.w3.org/TR/wai-aria-practices-1.1/examples/tabs/tab
 <td><img src="./ARIA-Tabs/horizontal-tabs/cover.png"  width="421" height="256" ></td>
 <td><img src="./ARIA-Tabs/vertical-tabs/cover.png"  width="421" height="256" ></td>
 </tr></table>
+
+### 12. SSR with React
+- Express.js on node server side
+- ReactServerDOM
+- React
+- ReactDOM
+
+More details on this article here: [SSR - react](https://jialihan.github.io/blog/#/react/ssr_react)
