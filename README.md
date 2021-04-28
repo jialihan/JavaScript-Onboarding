@@ -66,3 +66,13 @@ Javascript [setInterval()](https://www.w3schools.com/jsref/met_win_setinterval.a
 - Array.[indexOf(el)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf)
 
 <img src="./ARIA-Accordion/cover.png" height="427" width="281" >
+
+### 11. ARIA Tabs Example
+Docs: [ARIA-tabs](https://www.w3.org/TR/wai-aria-practices-1.1/examples/tabs/tabs-1/tabs.html)
+- Horizontal 
+- Vertical
+
+<table><tr>
+<td><img src="./ARIA-Tabs/horizontal-tabs/cover.png"  width="421" height="256" ></td>
+<td><img src="./ARIA-Tabs/vertical-tabs/cover.png"  width="421" height="256" ></td>
+</tr></table>
