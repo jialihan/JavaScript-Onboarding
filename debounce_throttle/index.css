@@ -1,0 +1,35 @@
+#search {
+    border: 1px solid rgb(93, 252, 191);
+    width: 160px;
+    height: 24px;
+}
+#search:focus,
+#search:active{
+    background: rgb(121, 156, 180);
+    border: 1px solid blue;
+}
+
+.container {
+    width: 220px;
+    height: 320px;
+    border: 1px solid greenyellow;
+    overflow: auto;
+}
+
+.box{
+    width: 100%;
+    height: 300px;
+    margin: 0;
+}
+.red{
+    background: red;
+}
+.blue{
+    background: blue;
+}
+.yellow{
+    background: orange;
+}
+.green {
+    background: green;
+}
