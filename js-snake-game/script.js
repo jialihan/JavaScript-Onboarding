@@ -1,3 +1,5 @@
+// codepen link: https://codepen.io/jellyhan27/pen/QWrBdyv
+
 const boardEL = document.getElementById("board");
 const width = 20;
 const height = 20;
