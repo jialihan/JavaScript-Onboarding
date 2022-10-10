@@ -13,8 +13,7 @@ let pos = [
 ];
 let food;
 let timer;
-
-paintBoard();
+paintBoard(); // init UI
 
 function startGame() {
   clearBoard();
@@ -23,6 +22,21 @@ function startGame() {
   setKeyBoardEvent();
   startTimer();
 }
+
+function endGame() {
+  clearInterval(timer);
+  document.querySelector(".end-game").textContent = "GAME OVER!";
+  return;
+}
+
+function pauseGame() {
+  clearInterval(timer);
+}
+
+function resumeGame() {
+  startTimer();
+}
+
 function startTimer() {
   timer = setInterval(() => {
     clearSnake();
@@ -30,6 +44,7 @@ function startTimer() {
     paintSnake();
   }, 500);
 }
+
 function snakeMove() {
   const headX = pos[0][0] + dir[0];
   const headY = pos[0][1] + dir[1];
@@ -64,6 +79,7 @@ function paintBoard() {
     }
   }
 }
+
 function paintFood() {
   const x = Math.floor(Math.random() * 20);
   const y = Math.floor(Math.random() * 20);
@@ -73,7 +89,6 @@ function paintFood() {
 }
 
 function paintSnake() {
-  // pos = [Math.floor(Math.random() * 20), Math.floor(Math.random() * 20)];
   let id;
   for (const p of pos) {
     id = (p[0] * 20 + p[1]).toString();
@@ -116,19 +131,4 @@ function clearBoard() {
       document.getElementById(id).style.backgroundColor = "transparent";
     }
   }
-}
-
-function endGame() {
-  clearInterval(timer);
-  //   console.log(pos);
-  document.querySelector(".end-game").textContent = "GAME OVER!";
-  return;
-}
-
-function pauseGame() {
-  clearInterval(timer);
-}
-
-function resumeGame() {
-  startTimer();
 }
