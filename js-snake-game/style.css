@@ -4,6 +4,12 @@
   color: white;
   font-size: 16px;
 }
+.resume-game-btn {
+  padding: 8px;
+  background: green;
+  color: white;
+  font-size: 16px;
+}
 
 .stop-game-btn {
   padding: 8px;

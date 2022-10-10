@@ -4,8 +4,13 @@ const boardEL = document.getElementById("board");
 const width = 20;
 const height = 20;
 const size = 20;
-let dir;
-let pos;
+let dir = [0, 1]; // "right";
+let pos = [
+  [0, 3],
+  [0, 2],
+  [0, 1],
+  [0, 0]
+];
 let food;
 let timer;
 
@@ -14,28 +19,39 @@ paintBoard();
 function startGame() {
   clearBoard();
   paintFood();
-  pos = [Math.floor(Math.random() * 20), Math.floor(Math.random() * 20)];
   paintSnake();
-  dir = [0, 1]; // "right";
   setKeyBoardEvent();
-
+  startTimer();
+}
+function startTimer() {
   timer = setInterval(() => {
-    const nextX = pos[0] + dir[0];
-    const nextY = pos[1] + dir[1];
-    if (nextX < 0 || nextX >= 20 || nextY < 0 || nextY >= 20) {
-      clearInterval(timer);
-      console.log(pos);
-      document.querySelector(".end-game").textContent = "GAME OVER!";
-      return;
-    }
     clearSnake();
-    pos[0] = nextX;
-    pos[1] = nextY;
+    snakeMove();
     paintSnake();
-    if (pos[0] === food[0] && pos[1] === food[1]) {
-      paintFood();
-    }
   }, 500);
+}
+function snakeMove() {
+  const headX = pos[0][0] + dir[0];
+  const headY = pos[0][1] + dir[1];
+  pos.unshift([headX, headY]);
+
+  // check food
+  if (headX === food[0] && headY === food[1]) {
+    paintFood();
+  } else {
+    pos.pop();
+  }
+
+  // validate snake pos and body
+  if (headX < 0 || headX >= 20 || headY < 0 || headY >= 20) {
+    endGame();
+  }
+  for (let i = 1; i < pos.length; i++) {
+    const [x, y] = pos[i];
+    if (x === headX && y === headY) {
+      endGame();
+    }
+  }
 }
 
 function paintBoard() {
@@ -57,8 +73,12 @@ function paintFood() {
 }
 
 function paintSnake() {
-  const id = (pos[0] * 20 + pos[1]).toString();
-  document.getElementById(id).style.backgroundColor = "blue";
+  // pos = [Math.floor(Math.random() * 20), Math.floor(Math.random() * 20)];
+  let id;
+  for (const p of pos) {
+    id = (p[0] * 20 + p[1]).toString();
+    document.getElementById(id).style.backgroundColor = "blue";
+  }
 }
 
 function setKeyBoardEvent() {
@@ -83,8 +103,10 @@ function setKeyBoardEvent() {
 }
 
 function clearSnake() {
-  const id = (pos[0] * 20 + pos[1]).toString();
-  document.getElementById(id).style.backgroundColor = "transparent";
+  for (const p of pos) {
+    const id = (p[0] * 20 + p[1]).toString();
+    document.getElementById(id).style.backgroundColor = "transparent";
+  }
 }
 
 function clearBoard() {
@@ -96,6 +118,17 @@ function clearBoard() {
   }
 }
 
-function stopGame() {
+function endGame() {
   clearInterval(timer);
+  //   console.log(pos);
+  document.querySelector(".end-game").textContent = "GAME OVER!";
+  return;
+}
+
+function pauseGame() {
+  clearInterval(timer);
+}
+
+function resumeGame() {
+  startTimer();
 }
