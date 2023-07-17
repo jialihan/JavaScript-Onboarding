@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="./test1.js"></script>
+    <link rel="stylesheet" href="https://www.google.com/css/maia.css" />
+  </head>
+  <body>
+    <script defer src="./test3.js"></script>
+    <script defer src="./test2.js"></script>
+    <script async src="./test4.js"></script>
+  </body>
+</html>
+
+<!-- 
+OUTPUt:  
+test 1
+test 4 - async
+test 3 - defer
+test 2 - defer -->
+
+<!-- Default:  the browser must wait for the script to download, execute the downloaded script, and only then can it process the rest of the page.
+Async: non-blocking, didn't wait any other script, it's an independent tasks, it will run when ready.
+Defer: non-blocking, tells the browser not to wait for the script. Instead, the browser will continue to process the HTML, build DOM. The script loads “in the background”, and then runs when the DOM is fully built. -->
