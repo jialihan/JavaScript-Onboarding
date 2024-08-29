@@ -53,6 +53,8 @@ var resetHTML = () => {
 // eg: const date1 = new Date('December 17, 1995 03:24:00');
 // eg: const date2 = new Date('1995-12-17T03:24:00');
 var countDownDate = new Date("Jan 5, 2030 15:37:25").getTime();
+// new Date('2030-01-05T15:37:25');
+// new Date(2030, 1, 5, 15, 37, 25);
 
 // Update the count down every 1 second
 var x = setInterval(function () {
